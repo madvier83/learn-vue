@@ -17,13 +17,16 @@ const vm = new Vue({
         }
     },
     methods:{
+        changePage: function(page){
+            this.menu = page
+        },
         getName: function(){
             return "Hi, my name is " + this.name;
         },
         changeName: function(newName){
             this.name = newName;
         },
-        checkGenap: function(numbers){
+        checkEven: function(numbers){
             return numbers.filter(data => {
                 return data % 2 == 0;
             })
@@ -41,6 +44,10 @@ const vm = new Vue({
             if(number>0&&number<0.5){
                 return 'green';
             }
+        },
+        submit: function(event){
+            this.materi.push(event.target.value)
+            event.target.value = ""
         }
     },
     computed: {

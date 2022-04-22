@@ -13,9 +13,9 @@
 
         <nav>
             <ul class="navbar">
-                <li><a :class="{active:menu==='test1'}" v-on:click="menu='test1'" href="#">Test1</a></li>
-                <li><a :class="{active:menu==='test2'}" v-on:click="menu='test2'" href="#">Test2</a></li>
-                <li><a :class="{active:menu==='test3'}" v-on:click="menu='test3'" href="#">Test3</a></li>
+                <li><a :class="{active:menu==='test1'}" v-on:click.prevent="changePage('test1')" href="#">Test1</a></li>
+                <li><a :class="{active:menu==='test2'}" v-on:click.prevent="changePage('test2')" href="#">Test2</a></li>
+                <li><a :class="{active:menu==='test3'}" v-on:click.prevent="changePage('test3')" href="#">Test3</a></li>
                 <li><a target="blank" href="https://github.com/madvier83/">GitHub</a></li>
             </ul>
         </nav>
@@ -48,9 +48,6 @@
 
             <hr>
             
-            <script>
-                vm.bear = Math.random();
-            </script>
             <template v-if="bear>0.9">
                 <h5 >The bear has appeared ʕ•ᴥ•ʔ  <button @click="greet(name)">Say hello</button><button @click="bear=0">Run</button></h5>
             </template>
@@ -58,6 +55,9 @@
             <small v-bind:style="{ color: dangerLevel(bear) }">{{ bear }}</small><br><br>
 
             <hr>
+
+            <p>Submit</p>
+            <input type="text" placeholder="Add new class" v-on:keyup.enter="submit">
 
             <br>
             <p>Looping . . boring</p>
@@ -72,7 +72,7 @@
 
             <p>Looping array w filter {{ numbers }}</p>
             <ul>
-                <li v-for="x in checkGenap(numbers)">{{ x }}</li>
+                <li v-for="x in checkEven(numbers)">{{ x }}</li>
             </ul>
             
             <p>Looping object</p>
