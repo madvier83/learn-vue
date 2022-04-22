@@ -1,5 +1,39 @@
-const vm = new Vue({
+const Home = {
+    template: `<div>text text text</div>`
+}
+
+Vue.component('header-component', {
+    template: `
+    <nav>
+        <ul class="navbar">
+            <li><a :class="{active:menu==='test1'}" v-on:click.prevent="changePage('test1')" href="#">Test1</a></li>
+            <li><a :class="{active:menu==='test2'}" v-on:click.prevent="changePage('test2')" href="#">Test2</a></li>
+            <li><a :class="{active:menu==='test3'}" v-on:click.prevent="changePage('test3')" href="#">Test3</a></li>
+            <li><a target="blank" href="https://github.com/madvier83/">GitHub</a></li>
+        </ul>
+    </nav>`,
+    props: ['menu'],
+    // data: function() {
+    //     return {
+    //       menu: 'test1'
+    //     }
+    // },
+    methods: {
+        changePage: function(page){
+            this.menu = page
+        }
+    }
+})
+
+Vue.component('footer-component',{
+    template: '<p>copyright &copy; 2022</p>'
+})
+
+const app = new Vue({
     el:'#app',
+    components:{
+        'home': Home
+    },
     data:{
         name: 'Muhammad Advie Rifaldy',
         message: 'hello world',
